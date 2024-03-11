@@ -10,8 +10,8 @@ import java.util.Scanner;
 public class JDBCExample6 {
 	public static void main(String[] args) {
 		
+		/* 1. JDBC 객체 참조 변수 선언 */
 		Connection conn = null;
-		ResultSet rs = null;
 		
 		// PreparedStatement (준비된 Statement)
 		// - 외부 변수 값을 SQL에 받아드릴 준비가 되어있는 Statement
@@ -21,6 +21,8 @@ public class JDBCExample6 {
 		
 		 
 		try {
+			
+			/* 2. DriverManager 객체를 이용해서 Connection 연결 */
 			
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			
