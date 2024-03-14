@@ -47,16 +47,11 @@ public class JDBCRun2 {
 			}
 			
 			
-			
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	
-		
-		
-		
-		
+
 	}
 
 }

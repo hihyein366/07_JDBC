@@ -80,8 +80,6 @@ public class JDBCExample6 {
 				conn.rollback();
 			}
 			
-			System.out.println(rs);
-			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
