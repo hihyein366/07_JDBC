@@ -34,6 +34,7 @@
 		WHERE DEPT_ID = ?
 	</entry>
 	
+	<!-- 물음표엔 알아서 '' 감싸져서 각각 홑따옴표로 감싸주기 -->
 	<!-- 부서 검색 -->
 	<entry key="searchDepartment">
 		SELECT * FROM DEPARTMENT4

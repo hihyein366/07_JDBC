@@ -202,39 +202,41 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 	
 	// 부서 검색
 	@Override
-	public Department searchDepartment(Connection conn, String keyword) throws SQLException {
+	public List<Department> searchDepartment(Connection conn, String keyword) throws SQLException {
 
-		List<Department> departments = new ArrayList<>();
-    ResultSet rs = null;
+		// 결과를 저장할 변수/객체 생성
+		List<Department> deptList = new ArrayList<Department>();
 		
-		Department dept = null;
 		
 		try {
-			String sql = prop.getProperty("keyword");
+			String sql = prop.getProperty("searchDepartment");
 			
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, keyword);
-
+			
+			// SQL(SELECT) 수행 후 결과(ResultSet) 반환 받기
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) {
-				dept = new Department(
-						rs.getString("DEPT_ID"),
-						rs.getString("DEPT_TITLE"),
-						rs.getString("LOCATION_ID")
-						);
-			} else {
-						close(rs);
-						close(pstmt);
+			// 결과 여러 개니까 while 이용해서 한 행씩 접근, 컬럼 값 모두 얻어오기
+			while(rs.next()) {
+				String deptId = rs.getString(1); // 조회 결과 컬럼 순서
+				String deptTitle = rs.getString(2); // 조회 결과 컬럼 순서
+				String locationId = rs.getString(3); // 조회 결과 컬럼 순서
+				
+				Department dept = new Department(deptId, deptTitle, locationId);
+				
+				deptList.add(dept);
 			}
-			
-		} finally {
-		
+				
+
+		}finally {
+			close(rs);
+			close(pstmt);
 		}
 		
 		
-		return dept;
+		return deptList;
 	}
 	
 }

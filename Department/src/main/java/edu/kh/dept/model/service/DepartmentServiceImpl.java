@@ -194,17 +194,16 @@ public class DepartmentServiceImpl implements DepartmentService {
 	
 	// 부서 검색
 	@Override
-	public Department searchDepartment(String keyword) throws SQLException {
+	public List<Department> searchDepartment(String keyword) throws SQLException {
+		
 		Connection conn = getConnection();
 		
-		Department dept = dao.searchDepartment(conn, keyword);
+		// 결과를 저장할 변수/객체 생성
+		List<Department> deptList = dao.searchDepartment(conn, keyword);
 
-		if(dept.isEmpty()) commit(conn);
-		else rollback(conn);
-		
 		close(conn);
 		
-		return dept;
+		return deptList;
 	}
 
 

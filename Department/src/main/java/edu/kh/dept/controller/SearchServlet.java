@@ -25,22 +25,17 @@ public class SearchServlet extends HttpServlet{
 			
 			String keyword = req.getParameter("keyword"); // servlet에 적은 naem 속성으로 가져옴
 			
-			List<Department> result = service.searchDepartment(keyword);
+			List<Department> deptList = service.searchDepartment(keyword);
 			
+			// 조회 결과를 request scope에 속성으로 세팅
+			req.setAttribute("deptList", deptList);
 			
-			HttpSession session = req.getSession();
+			// froward할 JSP 경로
+			String path = "/WEB-INF/views/search.jsp";
 			
-			if(result.isEmpty()) {
-				req.getSession().setAttribute("message", "해당 부서가 존재하지 않다");
-				resp.sendRedirect("/department/selectAll");
-				
-			} else {
-				req.setAttribute("result", result);
-				// froward할 JSP 경로
-				String path = "/WEB-INF/views/search.jsp";
-				req.getRequestDispatcher(path).forward(req, resp);
-				
-			}
+			req.getRequestDispatcher(path).forward(req, resp);
+			
+
 			
 		}catch (Exception e) {
 			e.printStackTrace();

@@ -54,10 +54,10 @@ public interface DepartmentService {
 
 	/** 부서 검색
 	 * @param keyword
-	 * @return
+	 * @return deptList
 	 * @throws SQLException
 	 */
-	Department searchDepartment(String keyword) throws SQLException;
+	List<Department> searchDepartment(String keyword) throws SQLException;
 	
 	
 	
