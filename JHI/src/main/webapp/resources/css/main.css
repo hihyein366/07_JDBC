@@ -1,0 +1,46 @@
+#header-text {
+    font-style: italic;
+    width: 40%;
+    background: linear-gradient(to top, #FFE400 50%, transparent 50%);
+    user-select: none;
+    cursor: pointer;
+}
+
+#addBook {
+    border: 2px solid black;
+    border-radius: 8px;
+    width: 150px;
+    height: 40px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#addBook:hover {
+    color: gray;
+}
+
+#title {
+    width: 150px;
+}
+
+#author {
+    min-width: 120px
+}
+
+#date {
+    width: 170px;
+}
+
+td {
+    height: 32px;
+}
+
+th {
+    background-color: bisque;
+}
+
+table {
+    text-align: center;
+    border: 1px solid black;
+}

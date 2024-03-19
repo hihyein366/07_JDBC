@@ -121,7 +121,7 @@ public class TodoServiceImpl implements TodoService {
 
 		Connection conn = getConnection();
 		
-		int result = dao.deleteTodo(conn, todoNo);
+		int result = dao.deleteTodo(conn,todoNo);
 		
 		if(result > 0) commit(conn);
 		else rollback(conn);
